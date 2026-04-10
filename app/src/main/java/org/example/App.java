@@ -6,12 +6,15 @@ public class App {
   public static void main(String[] args) {
     Scanner scanner = new Scanner(System.in);
     Game game = new Game();
+    GameLog log = new GameLog();
 
     System.out.println("Welcome to Tic-Tac-Toe");
     boolean playAgain = true;
+
+    char nextStart = 'X';
     
     while (playAgain) {
-      game.reset();
+      game.reset(nextStart);
       game.getBoard().printBoard();
       while (!game.isGameOver()) {
 
@@ -39,15 +42,28 @@ public class App {
       }
 
       char winner = game.getBoard().getWinner();
+      log.recordResult(winner);
       if (winner == 'X' || winner == 'O') {
         System.out.println("Player " + winner + " wins!");
       } else {
         System.out.println("The game is a draw!");
       }
       System.out.println();
+      System.out.println("The current log is:\n");
+      log.printLog();
+      System.out.println();
+      if (winner == 'X') {
+        nextStart = 'O';
+      } else if (winner =='O') {
+        nextStart = 'X';
+      } else {
+
+      }
       playAgain = askPlayAgain(scanner);
     }
     System.out.println();
+    log.printLog();
+    log.saveToFile();
     System.out.println("Goodbye!");
     scanner.close();
   }

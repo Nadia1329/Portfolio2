@@ -35,6 +35,7 @@ class BoardTest {
     void testPlaceMarkOnOccupiedCellFails() {
         Board board = new Board();
         board.placeMark(1, 'O');
+        assertFalse(board.placeMark(1, 'X'));
     } 
     
     @Test
@@ -74,5 +75,13 @@ class BoardTest {
     void testHasWinnerFalse() {
         Board board = new Board();
         assertFalse(board.hasWinner());
+    }
+
+    @Test
+    void testResetRestoresNumbers(){
+      Board board = new Board();
+      board.placeMark(1, 'X');
+      board.reset();
+      assertEquals('1', board.getCells()[0]);
     }
 }

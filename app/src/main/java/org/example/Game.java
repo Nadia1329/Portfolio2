@@ -24,13 +24,17 @@ public class Game {
         return board.hasWinner() || board.isFull();
     }
 
-    public void reset() {
+    public void reset(char startingPlayer) {
         board.reset();
-        currentPlayer = 'X';
+        currentPlayer = startingPlayer;
+    }
+
+    public void reset() {
+        reset('X');
     }
     
     public String getTurnMessage() {
-        return "Player" + currentPlayer + "'s turn.";
+        return "Player " + currentPlayer + "'s turn.";
     }
     
 }

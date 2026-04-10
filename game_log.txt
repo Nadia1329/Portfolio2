@@ -1,0 +1,4 @@
+Game Log:
+X Wins: 2
+O Wins: 1
+Ties: 0
