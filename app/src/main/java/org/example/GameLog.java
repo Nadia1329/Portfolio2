@@ -46,4 +46,16 @@ public class GameLog {
         
         }
     }
+    public int getXWins() {
+        return xWins;
+    }
+
+    public int getOWins() {
+        return oWins;
+    }
+
+    public int getTies() {
+        return ties;
+    }
+
 }
